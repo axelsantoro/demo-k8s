@@ -15,6 +15,7 @@ pipeline {
                                           usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
 
                      sh "gradle pushImage -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword=${HUB_PASSWDORD}"
+
                 }
             }
         }
