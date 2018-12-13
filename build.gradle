@@ -70,6 +70,17 @@ import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 import com.bmuschko.gradle.docker.tasks.image.Dockerfile
 
 
+def dockerRegistyUsername = System.properties['dockerRegistyUsername']
+def dockerRegistyPassword = System.properties['dockerRegistyPassword']
+
+docker {
+
+    registryCredentials {
+        username = "$dockerRegistyUsername"
+        password = "$dockerRegistyPassword"
+    }
+}
+
 task createDockerfile(type: Dockerfile) {
 
     dependsOn build
