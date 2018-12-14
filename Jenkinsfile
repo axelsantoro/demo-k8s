@@ -19,5 +19,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy'){
+
+            steps{
+                sh "helm install k8s/demo-k8s --namespace dev"
+            }
+        }
     }
 }
