@@ -22,7 +22,7 @@ pipeline {
         stage('Helm package'){
 
             steps{
-                sh "helm package  --set image.tag=0.11.0 k8s/demo-k8s --version 0.11.0"
+                sh "helm package k8s/demo-k8s --version 0.11.0"
             }
         }
     }
