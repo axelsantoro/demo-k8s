@@ -14,7 +14,7 @@ pipeline {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
                                           usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
 
-                     sh "gradle pushImage -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword='$HUB_PASSWDORD'"
+                     sh "gradle pushImage -DappVersion=0.11.0 -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword='$HUB_PASSWDORD'"
 
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Helm package'){
 
             steps{
-                sh "helm package k8s/demo-k8s"
+                sh "helm package k8s/demo-k8s --version 0.11.0 --set image.tag=0.11.0"
             }
         }
     }
