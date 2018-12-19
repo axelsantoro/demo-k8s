@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 script {
-                    env.VERSION =  "0.1.0"
+                    env.VERSION =  "0.2.0"
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
                                               usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
 
