@@ -1,0 +1,12 @@
+pipeline {
+
+    agent any
+    stages {
+        stage('Deploy'){
+
+            steps{
+                sh "helm upgrade package k8s/demo-k8s --version 0.11.0 --set db.url='dbc:sqlserver://192.168.88.12:1433;databaseName=demo',image.tag=0.11.0"
+            }
+        }
+    }
+}
