@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Helm package'){
 
-            steps {
+            steps{
                 script{
 
                     def valuesPath = "$WORKSPACE/k8s/demo-k8s/values.yml"
@@ -32,6 +32,7 @@ pipeline {
                     writeFile file: valuesPath, text: valuesFileWithVersion
                     sh "helm package k8s/demo-k8s --version 0.13.0"
                 }
+            }
         }
     }
 }
