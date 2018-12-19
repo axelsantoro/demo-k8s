@@ -14,7 +14,7 @@ pipeline {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
                                           usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
 
-                     sh "gradle pushImage -DappVersion=0.11.0 -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword='$HUB_PASSWDORD'"
+                     sh "gradle pushImage -DappVersion=0.12.0 -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword='$HUB_PASSWDORD'"
 
                 }
             }
