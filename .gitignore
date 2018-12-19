@@ -6,3 +6,5 @@ build
 out
 *.iml
 *idea
+k8s/*.tgz
+k8s/demo-k8s/*.tgz

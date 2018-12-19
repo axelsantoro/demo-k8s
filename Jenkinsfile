@@ -19,10 +19,10 @@ pipeline {
                 }
             }
         }
-        stage('Deploy'){
+        stage('Helm package'){
 
             steps{
-                sh "helm upgrade 0.1.0 k8s/demo-k8s --install --namespace dev"
+                sh "helm package k8s/demo-k8s"
             }
         }
     }

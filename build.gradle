@@ -95,7 +95,7 @@ task createDockerfile(type: Dockerfile) {
 }
 
 
-def dockerRegistry = "axelsantoro36"
+def dockerRegistry = "matitanio"
 task buildImage(type: DockerBuildImage) {
 
     dependsOn createDockerfile

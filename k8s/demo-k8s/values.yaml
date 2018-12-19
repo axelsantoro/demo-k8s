@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: axelsantoro36/demo-k8s
-  tag: 0.0.1-SNAPSHOT
+  repository: matitanio/demo-k8s
+  tag: 0.0.2-SNAPSHOT
   pullPolicy: IfNotPresent
 
 nameOverride: ""
