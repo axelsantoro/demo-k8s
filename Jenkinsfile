@@ -10,12 +10,14 @@ pipeline {
                 }
             }
             steps {
-                env.VERSION =  "0.1.0"
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
-                                          usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
+                script {
+                    env.VERSION =  "0.1.0"
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
+                                              usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
 
-                     sh "gradle pushImage -DappVersion=${env.VERSION} -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword='$HUB_PASSWDORD'"
+                         sh "gradle pushImage -DappVersion=${env.VERSION} -DdockerRegistyUsername=${HUB_USER} -DdockerRegistyPassword='$HUB_PASSWDORD'"
 
+                    }
                 }
             }
         }
