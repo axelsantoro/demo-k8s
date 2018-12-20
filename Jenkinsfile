@@ -11,7 +11,9 @@ pipeline {
             }
             steps {
                 script {
-                    env.VERSION =  "0.2.0"
+                    def currentVersion = sh(script: 'helm search local/demo-k8s | cut -f2 | sed -n 2p',returnStdout: true).trim()
+                    def splittedVersion = currentVersion.split('\\.')
+                    env.VERSION = splittedVersion[0] + '.' + (splittedVersion[1].toInteger() + 1) + '.' + splittedVersion[2]
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
                                               usernameVariable: 'HUB_USER', passwordVariable: 'HUB_PASSWDORD']]) {
 
