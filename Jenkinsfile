@@ -2,6 +2,17 @@ pipeline {
 
     agent any
     stages {
+        stage('Create Version'){
+
+            steps{
+                script{
+                    def currentVersion = sh(script: 'helm search local/demo-k8s | cut -f2 | sed -n 2p',returnStdout: true).trim()
+                    def splittedVersion = currentVersion.split('\\.')
+                    env.VERSION = splittedVersion[0] + '.' + (splittedVersion[1].toInteger() + 1) + '.' + splittedVersion[2]
+                    printn "nueva version[${env.VERSION}]"
+                }
+            }
+        }
         stage('Build Image'){
             agent {
                 docker {
@@ -9,18 +20,6 @@ pipeline {
                     args '-v $HOME/.gradle:/home/gradle/.gradle'
                 }
             }
-            steps('Create Version'){
-
-                steps{
-                    script{
-                        def currentVersion = sh(script: 'helm search local/demo-k8s | cut -f2 | sed -n 2p',returnStdout: true).trim()
-                        def splittedVersion = currentVersion.split('\\.')
-                        env.VERSION = splittedVersion[0] + '.' + (splittedVersion[1].toInteger() + 1) + '.' + splittedVersion[2]
-                        printn "nueva version[${env.VERSION}]"
-                    }
-                }
-            }
-
             steps {
                 script {
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "d-hub",
