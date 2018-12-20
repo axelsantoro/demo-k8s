@@ -13,7 +13,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 db:
-  url: "jdbc:sqlserver://198.18.191.135:1433;databaseName=demo"
+  url: "jdbc:sqlserver://192.168.88.12:1433;databaseName=demo"
 
 service:
   type: ClusterIP
