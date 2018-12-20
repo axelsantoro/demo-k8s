@@ -11,7 +11,7 @@ pipeline {
             }
             steps('Create Version'){
 
-                step{
+                steps{
                     script{
                         def currentVersion = sh(script: 'helm search local/demo-k8s | cut -f2 | sed -n 2p',returnStdout: true).trim()
                         def splittedVersion = currentVersion.split('\\.')
